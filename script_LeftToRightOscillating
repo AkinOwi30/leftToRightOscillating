@@ -1,1 +1,64 @@
-//yo
+//====Absolute beginning of leftToRight_Oscillating script================================ 
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class leftToRight_Oscillating : MonoBehaviour
+{//Beginning of leftToRight_Oscillating class
+
+    public Rigidbody objectRig;
+    public float obj_speed, timer, maxTimer;
+    public bool moveRight;
+
+    //novo de differente
+    public float speed;
+
+   
+    // Start is called before the first frame update
+    void Start()
+    {
+        timer = maxTimer;
+    }
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (moveRight == true)
+        {
+            if (timer > 0)
+            {
+                //objectRig.velocity = transform.right * obj_speed * Time.deltaTime;
+                transform.Translate(Vector3.right * Time.deltaTime * speed); //novo
+            }
+            else
+            {
+
+                moveRight = false;
+                timer = maxTimer;
+            }
+        }
+        if (moveRight == false)
+        {
+            if (timer > 0)
+            {
+                //objectRig.velocity = -transform.right * obj_speed * Time.deltaTime;
+                transform.Translate(Vector3.left * Time.deltaTime * speed);//novo
+            }
+            else
+            {
+
+                moveRight = true;
+                timer = maxTimer;
+            }
+        }
+    }
+
+
+}//End of leftToRight_Oscillating class
+
+//====Absolute end of leftToRight_Oscillating script============================ 
